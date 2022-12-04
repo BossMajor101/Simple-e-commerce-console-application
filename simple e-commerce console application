@@ -1,0 +1,69 @@
+// This is a simple e-commerce console application that allows a user to shop for items, view their cart, and check out. 
+
+// define a function to display welcome message
+function showWelcomeMessage() {
+    console.log("Welcome to the e-commerce store!");
+}
+
+// define a function to display list of items
+function showItems() {
+    console.log("Here is a list of items available for purchase:");
+    console.log("1. Shoes - $50");
+    console.log("2. Shirt - $30");
+    console.log("3. Pants - $40");
+    console.log("4. Hat - $20");
+}
+
+// define a function to add item to cart
+function addItemToCart(itemNum, cart) {
+    switch(itemNum) {
+        case 1:
+            cart.push("Shoes - $50");
+            break;
+        case 2:
+            cart.push("Shirt - $30");
+            break;
+        case 3:
+            cart.push("Pants - $40");
+            break;
+        case 4:
+            cart.push("Hat - $20");
+            break;
+        default:
+            console.log("Invalid item number!");
+    }
+    return cart;
+}
+
+// define a function to view items in cart
+function viewCart(cart) {
+    console.log("Here are the items in your cart:");
+    for(let i = 0; i < cart.length; i++) {
+        console.log(cart[i]);
+    }
+}
+
+// define a function to calculate total cost of items in cart
+function calculateTotalCost(cart) {
+    let totalCost = 0;
+    for(let i = 0; i < cart.length; i++) {
+        let itemCost = parseInt(cart[i].split("$")[1]);
+        totalCost += itemCost;
+    }
+    return totalCost;
+}
+
+// define a function to check out
+function checkOut(totalCost) {
+    console.log(`Your total cost is $${totalCost}. Please enter your payment information.`);
+}
+
+// main program
+let cart = [];
+showWelcomeMessage();
+showItems();
+let itemNum = parseInt(prompt("Please enter the item number you would like to purchase:"));
+cart = addItemToCart(itemNum, cart);
+viewCart(cart);
+let totalCost = calculateTotalCost(cart);
+checkOut(totalCost);
